@@ -46,9 +46,9 @@ POST http://localhost:3333/api/movie
 Content-Type: application/json
 
 {
-    "title": "Eco",
-    "studios": "Algum ai",
-    "producers": "Nilton",
+    "title": "Movie 1",
+    "studios": "Movie Studios",
+    "producers": "Fulano",
     "year": "2008",
     "winner": ""
 }
@@ -61,7 +61,7 @@ PUT http://localhost:3333/api/movie/<movie id>
 Content-Type: application/json
 
 {
-    "winner": "maybe"
+    "winner": "yes"
 }
 ```
 
