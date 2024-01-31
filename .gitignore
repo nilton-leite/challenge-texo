@@ -1,0 +1,5 @@
+.env
+node_modules/
+coverage/
+yarn.lock   
+movies.db

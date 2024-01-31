@@ -1,0 +1,28 @@
+
+### Get Movies
+GET http://localhost:3333/api/movie/all
+Content-Type: application/json
+
+### Create movie
+POST http://localhost:3333/api/movie
+Content-Type: application/json
+
+{
+    "title": "Eco",
+    "studios": "Algum ai",
+    "producers": "Nilton",
+    "year": "2008",
+    "winner": ""
+}
+
+### Update Movie
+PUT http://localhost:3333/api/movie/0GuR3KpFIRVOeil7
+Content-Type: application/json
+
+{
+    "winner": "maybe"
+}
+
+### Delete Movie
+DELETE http://localhost:3333/api/movie/0GuR3KpFIRVOeil7
+Content-Type: application/json

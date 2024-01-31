@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # mongodb:
+  #   image: mongo:5.0.2
+  #   restart: unless-stopped
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=root
+  #     - MONGO_INITDB_ROOT_PASSWORD=root
+  #   ports:
+  #     - 27017:27017
+  #   volumes:
+  #     - db:/data/db
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27017:27017"
+    # volumes:
+    #   - /home/renatogroffe/Desenvolvimento/Docker/Volumes/MongoDB:/data/db
+    networks:
+      - mongo-compose-network
+  app:
+    depends_on:
+      - mongodb
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 3333:3333
+    links:
+      - mongodb
+    environment:
+      - DB_HOST=mongodb
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=objective
+      - DB_PORT=27017
+    stdin_open: true
+    tty: true
+    networks:
+      - mongo-compose-network
+
+networks: 
+  mongo-compose-network:
+    driver: bridge
