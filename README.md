@@ -72,7 +72,9 @@ DELETE http://localhost:3333/api/movie/<movie id>
 Content-Type: application/json
 ```
 
-_Buscar produtores com premios com menor tenpo vanho e maior tempo_
+_Buscar produtores com premios com menor tempo ganho e maior tempo_
+
+
 **Rota especificada no modelo enviado**
 
 ```sh
