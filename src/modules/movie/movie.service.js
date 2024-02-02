@@ -32,7 +32,7 @@ class MovieService {
                         producersFinish.push({
                             producer: prod,
                             count: alone.length,
-                            movies: alone,
+                            movies: alone.filter((movi) => movi.winner === 'yes'),
                             order: 1
                         })
 
@@ -43,7 +43,7 @@ class MovieService {
                         producersFinish.push({
                             producer: producerAnd[1],
                             count: aloneAnd.length,
-                            movies: aloneAnd,
+                            movies: aloneAnd.filter((movi) => movi.winner === 'yes'),
                             order: 2
                         })
                     }
@@ -55,7 +55,7 @@ class MovieService {
                     producersFinish.push({
                         producer: item.producers,
                         count: alone.length,
-                        movies: alone,
+                        movies: alone.filter((movi) => movi.winner === 'yes'),
                         order: 3
                     })
                 } else {
@@ -66,7 +66,7 @@ class MovieService {
                          producersFinish.push({
                              producer: and,
                              count: aloneAnd.length,
-                             movies: aloneAnd,
+                             movies: aloneAnd.filter((movi) => movi.winner === 'yes'),
                              order: 4
                          })
                      })
@@ -104,6 +104,8 @@ class MovieService {
                             followingWin: producer.movies[j].year,
                             interval: Math.abs(intervalAux)
                         })
+
+                        break;
                     }
                 }
             }
@@ -117,10 +119,12 @@ class MovieService {
                         intervalAuxMax = intervalAux
                         producerYearIntervalMaxAux.push({
                             producer: producer.producer,
-                            previousWin: producer.movies[j].year,
-                            followingWin: producer.movies[i].year,
+                            previousWin: producer.movies[i].year,
+                            followingWin: producer.movies[j].year,
                             interval: Math.abs(intervalAux)
                         })
+
+                        break;
                     }
                 }
             }
@@ -133,8 +137,8 @@ class MovieService {
         }
         
         return { 
-            min: producerYearIntervalMinAux.sort(function(a, b){return a.interval - b.interval;}),
-            max: producerYearIntervalMaxAux.sort(function(a, b){return b.interval - a.interval;})
+            min: [producerYearIntervalMinAux.sort(function(a, b){return a.interval - b.interval;})[0]],
+            max: [producerYearIntervalMaxAux.sort(function(a, b){return b.interval - a.interval;})[0]]
         };
     
     }
