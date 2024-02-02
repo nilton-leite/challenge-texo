@@ -78,7 +78,7 @@ _Buscar produtores com premios com menor tempo ganho e maior tempo_
 **Rota especificada no modelo enviado**
 
 ```sh
-GET http://localhost:3333/api/all
+GET http://localhost:3333/api/movie/all
 Content-Type: application/json
 ```
 
