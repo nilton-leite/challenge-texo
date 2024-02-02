@@ -59,7 +59,7 @@ describe('Test Integration Location', () => {
     const res = await request(app).get("/api/movie/all").send();
     expect(res.statusCode).toBe(200);
     expect(res.body.min[0].producer).toEqual("Joel Silver");
-    expect(res.body.max[0].producer).toEqual("Joel Silver");
+    expect(res.body.max[0].producer).toEqual("Matthew Vaughn");
   });
 
 });
